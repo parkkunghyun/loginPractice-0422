@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container" style="max-width:560px">
+    <div class="py-5 text-center">
+        <h2 th:text="#{page.item}"></h2>
+    </div>
+
+    <h2 th:if="${param.status}" th:text="저장 완료!"></h2>
+
+    <div>
+        <label for="itemName" th:text="#{label.item.itemName}"></label>
+        <input type="text" id="itemName" name="itemName" class="form-control" th:value="${item.itemName}" readonly>
+    </div>
+    <div>
+        <label for="price" th:text="#{label.item.price}"></label>
+        <input type="text" id="price" name="price" class="form-control" th:value="${item.price}" readonly>
+    </div>
+    <div>
+        <label for="quantity" th:text="#{label.item.quantity}"></label>
+        <input type="text" id="quantity" name="quantity" class="form-control" th:value="${item.quantity}" readonly>
+    </div>
+    <div>
+        <label for="itemId" th:text="#{label.item.id}"></label>
+        <input type="text" id="itemId" name="itemId" class="form-control" th:value="${item.id}" readonly>
+    </div>
+
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary btn-lg"
+            th:onclick="|location.href='@{/items/{itemId}/edit(itemId=${item.id})}'|"
+            th:text="#{page.updateItem}"></button>
+        </div>
+
+        <div class="col">
+            <button class="btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/items}'|"
+                    th:text="#{button.cancel}">목록으로</button>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>
